@@ -17,15 +17,15 @@ const ImageEncryptor = () => {
   const getMethodDescription = (method) => {
     switch (method) {
       case "invert":
-        return "Inverts the color of each pixel (like a photo negative).";
+        return "(Inverts the color of each pixel (like a photo negative).)";
       case "brightness":
-        return "Increases the brightness of each pixel.";
+        return "(Increases the brightness of each pixel.)";
       case "xor":
-        return "Applies a bitwise XOR operation using a key.";
+        return "(Applies a bitwise XOR operation using a key.)";
       case "reverse":
-        return "Reverses the order of all pixel data.";
+        return "(Reverses the order of all pixel data.)";
       case "shuffle":
-        return "Randomly shuffles all pixel positions.";
+        return "(Randomly shuffles all pixel positions.)";
       default:
         return "";
     }
@@ -125,85 +125,85 @@ const ImageEncryptor = () => {
   };
 
   return (
-    
-      <div className="w-full max-w-5xl p-6 flex flex-col items-center justify-center">
-        <h1 className="text-3xl font-bold mb-4 text-center">🖼️ Image Encryption Tool 🔐</h1>
+    <div className="w-full max-w-5xl p-6 flex flex-col items-center justify-center space-y-6">
+      <h1 className="text-4xl font-extrabold text-white text-center tracking-wide">
+        🖼️ Image Encryption Tool 🔐
+      </h1>
 
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleImageUpload}
-          className="mb-4"
-        />
+      <input
+        type="file"
+        accept="image/*"
+        onChange={handleImageUpload}
+        className="mb-4"
+      />
 
-        <select
-          value={method}
-          onChange={handleMethodChange}
-          className="bg-gray-800 border border-gray-600 rounded px-3 py-2 mb-2 text-white"
-        >
-          <option value="invert">Invert Colors</option>
-          <option value="brightness">Brightness Adjustment</option>
-          <option value="xor">XOR with Key</option>
-          <option value="reverse">Reverse Pixels</option>
-          <option value="shuffle">Shuffle Pixels</option>
-        </select>
+      <select
+        value={method}
+        onChange={handleMethodChange}
+        className="bg-gray-800 border border-gray-600 rounded px-4 py-2 text-white"
+      >
+        <option style={{ color: "black", backgroundColor: "white" }} value="invert">Invert Colors</option>
+        <option style={{ color: "black", backgroundColor: "white" }} value="brightness">Brightness Adjustment</option>
+        <option style={{ color: "black", backgroundColor: "white" }} value="xor">XOR with Key</option>
+        <option style={{ color: "black", backgroundColor: "white" }} value="reverse">Reverse Pixels</option>
+        <option style={{ color: "black", backgroundColor: "white" }} value="shuffle">Shuffle Pixels</option>
+      </select>
 
-        <p className="text-sm text-gray-300 italic mb-6 text-center max-w-md">
-          {getMethodDescription(method)}
-        </p>
+      <p className="text-sm text-gray-300 italic text-center max-w-md">
+        {getMethodDescription(method)}
+      </p>
 
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-6 mb-6">
-          {originalImage && (
-            <div className="text-center">
-              <h3 className="text-lg font-semibold mb-2">Original Image</h3>
-              <img
-                src={originalImage}
-                alt="Original"
-                style={{ width: '320px', height: '320px', objectFit: 'contain' }}
-                className="border border-gray-500 rounded-lg"
-              />
-            </div>
-          )}
+      <div className="flex flex-col lg:flex-row items-center justify-center gap-8">
+        {originalImage && (
+          <div className="text-center">
+            <h3 className="text-lg font-semibold mb-2">Original Image</h3>
+            <img
+              src={originalImage}
+              alt="Original"
+              style={{ width: '320px', height: '320px', objectFit: 'contain' }}
+              className="border border-gray-500 rounded-lg"
+            />
+          </div>
+        )}
 
-          {encryptedImage && (
-            <div className="text-center">
-              <h3 className="text-lg font-semibold mb-2">
-                Encrypted Image – {method.charAt(0).toUpperCase() + method.slice(1)}
-              </h3>
-              <img
-                src={encryptedImage}
-                alt="Encrypted"
-                style={{ width: '320px', height: '320px', objectFit: 'contain' }}
-                className="border border-gray-500 rounded-lg"
-              />
-            </div>
-          )}
-        </div>
-
-        <div className="flex flex-wrap gap-4 justify-center">
-          <button
-            onClick={handleEncrypt}
-            className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded text-white font-medium"
-          >
-            Encrypt
-          </button>
-          <button
-            onClick={handleReset}
-            className="bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded text-white font-medium"
-          >
-            Reset
-          </button>
-          {encryptedImage && (
-            <button
-              onClick={handleDownload}
-              className="bg-green-600 hover:bg-green-700 px-4 py-2 rounded text-white font-medium"
-            >
-              Download
-            </button>
-          )}
-        </div>
+        {encryptedImage && (
+          <div className="text-center">
+            <h3 className="text-lg font-semibold mb-2">
+              Encrypted Image – {method.charAt(0).toUpperCase() + method.slice(1)}
+            </h3>
+            <img
+              src={encryptedImage}
+              alt="Encrypted"
+              style={{ width: '320px', height: '320px', objectFit: 'contain' }}
+              className="border border-gray-500 rounded-lg"
+            />
+          </div>
+        )}
       </div>
-    
+
+      <div className="flex flex-wrap gap-4 justify-center mt-4">
+        <button
+          onClick={handleEncrypt}
+          className="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded text-white font-medium"
+        >
+          Encrypt
+        </button>
+        <button
+          onClick={handleReset}
+          className="bg-gray-600 hover:bg-gray-700 px-6 py-2 rounded text-white font-medium"
+        >
+          Reset
+        </button>
+        {encryptedImage && (
+          <button
+            onClick={handleDownload}
+            className="bg-green-600 hover:bg-green-700 px-6 py-2 rounded text-white font-medium"
+          >
+            Download
+          </button>
+        )}
+      </div>
+    </div>
   );
 };
 
