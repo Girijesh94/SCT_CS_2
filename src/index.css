@@ -4,3 +4,29 @@
 html, body, #root {
   height: 100%;
 }
+.custom-button {
+  padding: 1.1em 1.2em;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+.custom-button:hover {
+  background-color: #231b97ff;
+  box-shadow: 0px 15px 20px rgba(34, 31, 210, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+.custom-button:active {
+  transform: translateY(-1px);
+}
